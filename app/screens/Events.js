@@ -24,9 +24,7 @@ class Events extends Component {
 	}
 	
 	componentDidMount() {
-		setTimeout(() => {
-			this.setState({isLoading: false});
-		}, 250);
+		this.setState({isLoading: false});
 	}
 	
 	render() {

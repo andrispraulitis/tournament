@@ -23,14 +23,44 @@ class Event extends Component {
 		}
 	}
 	
+	
+	
+	// componentWillMount() {
+	// 	console.log('componentWillMount', this.props);
+	// }
+	
 	componentDidMount() {
-		setTimeout(() => {
-			this.setState({isLoading: false});
-		}, 250);
+		this.setState({isLoading: false});
+		// console.log('componentDidMount');
 	}
 	
+	// componentWillUnmount() {
+	// 	console.log('componentWillUnmount');
+	// }
+	// 
+	// componentWillReceiveProps(nextProps) {
+	// 	console.log('componentWillReceiveProps');
+	// }
+	// 
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	console.log('shouldComponentUpdate');
+	// 	return true;
+	// }
+	// 
+	// componentWillUpdate(nextProps, nextState) {
+	// 	console.log('componentWillUpdate');
+	// }
+	// 
+	// componentDidUpdate(nextProps, nextState) {
+	// 	console.log('componentDidUpdate');
+	// }
+	
+	
+	
+	
+	
 	render() {
-		// console.log(`%c[ R E N D E R ] Event`, `color: blue`, this.props);
+		console.log(`%c[ R E N D E R ] Event`, `color: blue`, this.props);
 		if (this.state.isLoading) {
 			return null;
 		}

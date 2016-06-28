@@ -16,13 +16,14 @@ import { connect } from 'react-redux';
 class NavigationDrawer extends Component {
 	
 	render() {
-		const { navigation, navigationState, onNavigate } = this.props;
+		const { navigation, onNavigate } = this.props;
 		if (!navigation.children) {
 			return null;
 		}
 		const currentScene = navigation.name ? navigation.name : null;
 		// console.log(`%c[ R E N D E R ] Drawer`, `color: blue`, this.props);
 		console.log(`%c[ R E N D E R ] Drawer :: ${currentScene}`, `color: blue`, navigation.children[0]);
+		console.log('---- end log ----');
 		return (
             <Drawer
 				ref="navigation"

@@ -34,24 +34,66 @@ export default class Error extends Component {
 		switch (this.props.name) {
 			case 'Dashboard':
 				return (
-					<Button
-						label="Event"
-						onPress={ () => Actions.event() }
-					/>
+					<View>
+						<Button
+							label="Event"
+							onPress={ () => Actions.event() }
+						/>
+					</View>
 				)
 			case 'Events':
 				return (
-					<Button
-						label="Event"
-						onPress={ () => Actions.event() }
-					/>
+					<View>
+						<Button
+							label="Event"
+							onPress={ () => Actions.event() }
+						/>
+					</View>
+				)
+			case 'EventDetails':
+			case 'EventPlan':
+				return (
+					<View>
+						<Button
+							label="Dashboard"
+							onPress={ () => Actions.drawer() }
+						/>
+						<Button
+							label="Actions.pop()"
+							onPress={ () => Actions.pop() }
+						/>
+					</View>
 				)
 			case 'Messages':
 				return (
-					<Button
-						label="Conversation"
-						onPress={ () => Actions.Conversation() }
-					/>
+					<View>
+						<Button
+							label="Conversation"
+							onPress={ () => Actions.Conversation() }
+						/>
+						<Button
+							label="Actions.pop()"
+							onPress={ () => Actions.pop() }
+						/>
+					</View>
+				)
+			case 'Conversation':
+				return (
+					<View>
+						<Button
+							label="Actions.pop()"
+							onPress={ () => Actions.pop() }
+						/>
+					</View>
+				)
+			case 'Contacts':
+				return (
+					<View>
+						<Button
+							label="Conversation"
+							onPress={ () => Actions.Conversation() }
+						/>
+					</View>
 				)
 			default:
 				return null

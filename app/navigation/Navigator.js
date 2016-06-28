@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import {
+	TouchableOpacity,
 	Text
 } from "react-native";
 
@@ -31,7 +32,36 @@ class EventTabIcon extends Component {
 		// console.log('EventTabIcon', this.props);
 		return (
             <Text style={{color: this.props.selected ? "red" : "black"}}>{this.props.title}</Text>
-        );
+        )
+    }
+	
+}
+
+class EventBackButton extends Component {
+    
+	render() {
+		console.log('EventBackButton', this.props);
+		return (
+			<TouchableOpacity
+				//testID="backNavButton"
+				style={this.props.style}
+				onPress={() => Actions.pop()}
+			>
+				{/*{buttonImage && !childState.hideBackImage &&
+				<Image
+				source={buttonImage}
+				style={[
+				styles.backButtonImage,
+				this.props.leftButtonIconStyle,
+				state.barButtonIconStyle,
+				state.leftButtonIconStyle,
+				childState.leftButtonIconStyle,
+				]}
+				/>
+				}*/}
+				<Text>Back</Text>
+			</TouchableOpacity>
+        )
     }
 	
 }
@@ -61,28 +91,28 @@ const scenes = Actions.create(
 		<Scene key="drawer" component={Drawer} open={false}>
 			<Scene key="main" tabs={true} hideTabBar={true}>
 				<Scene
+					//initial={true}
+					//type="reset"
 					key="Dashboard"
 					component={Dashboard}
 					title="Dashboard"
-					renderBackButton={ () => null }
-					//type="reset"
-					initial={true}
+					//renderBackButton={ () => null }
 				/>
 				<Scene
+					//initial={true}
+					//type="reset"
 					key="Events"
 					component={Events}
 					title="Events"
-					renderBackButton={ () => null }
-					//type="reset"
-					//initial={true}
+					//renderBackButton={ () => null }
 				/>
 				<Scene
+					//initial={true}
+					//type="reset"
 					key="Contacts"
 					component={Contacts}
 					title="My Contacts"
-					renderBackButton={ () => null }
-					//type="reset"
-					//initial={true}
+					//renderBackButton={ () => null }
 				/>
 			</Scene>
 		</Scene>
@@ -93,28 +123,35 @@ const scenes = Actions.create(
 				component={Event}
 				title="Event Details"
 				icon={EventTabIcon}
-				initial={true}
+				backButton={EventBackButton}
+				renderRightButton={ () => null }
+				//onSelect={() => Actions.EventDetails()}
 			/>
 			<Scene
 				key="EventPlan"
 				component={Event}
 				title="Event Plan"
 				icon={EventTabIcon}
+				backButton={EventBackButton}
+				renderRightButton={ () => null }
+				//onSelect={() => Actions.EventPlan()}
 			/>
 		</Scene>
 		
 		<Scene key="chat">
 			<Scene
 				// NOTE need to use clone so Messages pushed to route stack and back button present
-				clone
+				clone={true}
+				hideTabBar={true}
+				direction="vertical"
 				key="Messages"
 				component={Messages}
 				title="Messages"
 				renderRightButton={ () => null }
-				direction="vertical"
 			/>
 			<Scene
-				clone
+				clone={true}
+				hideTabBar={true}
 				key="Conversation"
 				component={Conversation}
 				title="Conversation"

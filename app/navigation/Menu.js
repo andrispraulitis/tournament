@@ -25,7 +25,7 @@ class Menu extends Component {
 		const drawer		= this.context.drawer;
 		const currentScene	= navigation.name || null;
 		
-		// console.log(`%c[ R E N D E R ] Menu`, `color: blue`, currentScene, currentScene2, this.props);
+		// console.log(`%c[ R E N D E R ] Menu :: ${currentScene}`, `color: blue`, this.props);
 		return (
             <View style={styles.menu}>
 				<View
