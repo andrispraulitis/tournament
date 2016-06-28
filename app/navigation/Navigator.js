@@ -58,7 +58,7 @@ const getSceneStyle = function (props, computedProps) {
 const scenes = Actions.create(
 	<Scene key="root" hideNavBar={true}>
 		
-		<Scene key="drawer" component={Drawer}>
+		<Scene key="drawer" component={Drawer} open={false}>
 			<Scene key="main" tabs={true} hideTabBar={true}>
 				<Scene
 					key="Dashboard"

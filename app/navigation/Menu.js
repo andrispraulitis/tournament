@@ -20,11 +20,12 @@ import { connect } from 'react-redux';
 class Menu extends Component {
 	
 	render() {
-		const drawer = this.context.drawer;
-		const currentScene = 'test';
-		// const currentScene = this.props.navigationState.name || null;
-		// console.log('Menu:props', this.props);
-		// if (currentScene != null) console.log('currentScene :: ', currentScene);
+		const { navigation } = this.props;
+		
+		const drawer		= this.context.drawer;
+		const currentScene	= navigation.name || null;
+		
+		// console.log(`%c[ R E N D E R ] Menu`, `color: blue`, currentScene, currentScene2, this.props);
 		return (
             <View style={styles.menu}>
 				<View
@@ -38,21 +39,21 @@ class Menu extends Component {
 							label="Home"
 							styleButton={styles.button}
 							styleLabel={[styles.buttonLabel, (currentScene == 'Dashboard' ? {color: 'red'} : null)]}
-							onPress={ () => { drawer.close(); Actions.Dashboard(); } }
+							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Dashboard(); } }
 						/>
 						<Button
 							underlayColor="transparent"
 							label="Events"
 							styleButton={styles.button}
 							styleLabel={[styles.buttonLabel, (currentScene == 'Events' ? {color: 'red'} : null)]}
-							onPress={ () => { drawer.close(); Actions.Events(); } }
+							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Events(); } }
 						/>
 						<Button
 							underlayColor="transparent"
 							label="My Contacts"
 							styleButton={styles.button}
 							styleLabel={[styles.buttonLabel, (currentScene == 'Contacts' ? {color: 'red'} : null)]}
-							onPress={ () => { drawer.close(); Actions.Contacts(); } }
+							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Contacts(); } }
 						/>
 					</View>
 				</View>
@@ -110,7 +111,3 @@ const selectDispatch = (dispatch) => {
 }
 
 export default connect(selectState, selectDispatch)(Menu);
-
-Menu.contextTypes = {
-	drawer: React.PropTypes.object
-};
