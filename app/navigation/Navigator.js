@@ -58,14 +58,14 @@ const getSceneStyle = function (props, computedProps) {
 const scenes = Actions.create(
 	<Scene key="root" hideNavBar={true}>
 		
-		<Scene key="drawer" type="reset" component={Drawer}>
-			<Scene key="main" type="reset">
+		<Scene key="drawer" component={Drawer}>
+			<Scene key="main" tabs={true} hideTabBar={true}>
 				<Scene
 					key="Dashboard"
 					component={Dashboard}
 					title="Dashboard"
 					renderBackButton={ () => null }
-					type="reset"
+					//type="reset"
 					initial={true}
 				/>
 				<Scene
@@ -73,7 +73,7 @@ const scenes = Actions.create(
 					component={Events}
 					title="Events"
 					renderBackButton={ () => null }
-					type="reset"
+					//type="reset"
 					//initial={true}
 				/>
 				<Scene
@@ -81,7 +81,7 @@ const scenes = Actions.create(
 					component={Contacts}
 					title="My Contacts"
 					renderBackButton={ () => null }
-					type="reset"
+					//type="reset"
 					//initial={true}
 				/>
 			</Scene>
@@ -105,7 +105,7 @@ const scenes = Actions.create(
 		
 		<Scene key="chat">
 			<Scene
-				// NOTE need to use clone so Messages pushed to route stack
+				// NOTE need to use clone so Messages pushed to route stack and back button present
 				clone
 				key="Messages"
 				component={Messages}
@@ -135,7 +135,7 @@ export default class Navigator extends Component {
 	}
 	
 	render() {
-		console.log(`%c[ R E N D E R ] Navigator`, `color: blue`, this.props);
+		// console.log(`%c[ R E N D E R ] Navigator`, `color: blue`, this.props);
 		return (
 			<RouterWithRedux
 				scenes={scenes}

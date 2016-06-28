@@ -30,7 +30,7 @@ class Messages extends Component {
 	}
 	
 	render() {
-		console.log(`%c[ R E N D E R ] Messages`, `color: blue`, this.props);
+		// console.log(`%c[ R E N D E R ] Messages`, `color: blue`, this.props);
 		if (this.state.isLoading) {
 			return null;
 		}

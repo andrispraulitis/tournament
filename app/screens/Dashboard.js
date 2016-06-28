@@ -30,7 +30,7 @@ class Dashboard extends Component {
 	}
 	
 	render() {
-		console.log(`%c[ R E N D E R ] Profile`, `color: blue`, this.props);
+		// console.log(`%c[ R E N D E R ] Dashboard`, `color: blue`, this.props);
 		if (this.state.isLoading) {
 			return null;
 		}

@@ -30,7 +30,7 @@ class Contacts extends Component {
 	}
 	
 	render() {
-		console.log(`%c[ R E N D E R ] Contacts`, `color: blue`, this.props);
+		// console.log(`%c[ R E N D E R ] Contacts`, `color: blue`, this.props);
 		if (this.state.isLoading) {
 			return null;
 		}

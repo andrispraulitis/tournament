@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 class App extends Component {
 	
 	render() {
-		console.log(`%c[ R E N D E R ] App`, `color: blue`, this.props);
+		// console.log(`%c[ R E N D E R ] App`, `color: blue`, this.props);
 		if (!this.props.isLoggedIn) {
 			// TODO
 			return null;

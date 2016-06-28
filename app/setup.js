@@ -24,7 +24,7 @@ export default function setup(): Component {
 		}
 		
 		render() {
-			console.log(`%c[ R E N D E R ] setup`, `color: blue`, this.props);
+			// console.log(`%c[ R E N D E R ] setup`, `color: blue`, this.props);
 			if (this.state.isLoading) {
 				return null;
 			}

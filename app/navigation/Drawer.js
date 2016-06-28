@@ -20,7 +20,8 @@ class NavigationDrawer extends Component {
 		if (!navigation.children) {
 			return null;
 		}
-		console.log(`%c[ R E N D E R ] Drawer`, `color: blue`, this.props);
+		// console.log(`%c[ R E N D E R ] Drawer`, `color: blue`, this.props);
+		console.log(`%c[ R E N D E R ] Drawer`, `color: red`, navigation.children[0]);
 		return (
             <Drawer
 				ref="navigation"
