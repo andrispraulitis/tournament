@@ -54,10 +54,10 @@ export default class Error extends Component {
 			case 'EventPlan':
 				return (
 					<View>
-						<Button
+						{/*<Button
 							label="Dashboard"
-							onPress={ () => Actions.drawer() }
-						/>
+							onPress={ () => Actions.Dashboard() }
+						/>*/}
 						<Button
 							label="Actions.pop()"
 							onPress={ () => Actions.pop() }
