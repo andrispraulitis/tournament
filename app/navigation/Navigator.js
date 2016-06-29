@@ -13,6 +13,7 @@ import Drawer from './Drawer';
 import Dashboard from '../screens/Dashboard';
 import Events from '../screens/Events';
 import Event from '../screens/Event';
+import Test from '../screens/Test';
 import Contacts from '../screens/Contacts';
 import Messages from '../screens/Messages';
 import Conversation from '../screens/Conversation';
@@ -40,26 +41,14 @@ class EventTabIcon extends Component {
 class EventBackButton extends Component {
     
 	render() {
-		console.log('EventBackButton', this.props);
+		// console.log('EventBackButton', this.props);
 		return (
 			<TouchableOpacity
 				//testID="backNavButton"
 				style={this.props.style}
 				onPress={() => Actions.pop()}
 			>
-				{/*{buttonImage && !childState.hideBackImage &&
-				<Image
-				source={buttonImage}
-				style={[
-				styles.backButtonImage,
-				this.props.leftButtonIconStyle,
-				state.barButtonIconStyle,
-				state.leftButtonIconStyle,
-				childState.leftButtonIconStyle,
-				]}
-				/>
-				}*/}
-				<Text>Back</Text>
+				<Text style={this.props.textButtonStyle}>Back</Text>
 			</TouchableOpacity>
         )
     }
@@ -117,6 +106,15 @@ const scenes = Actions.create(
 			</Scene>
 		</Scene>
 		
+		{/*<Scene
+			clone={true}
+			duration={1000}
+			key="Test"
+			component={Test}
+			title="Test"
+			renderRightButton={ () => null }
+		/>*/}
+		
 		<Scene key="event" tabs={true}>
 			<Scene
 				key="EventDetails"
@@ -138,7 +136,7 @@ const scenes = Actions.create(
 			/>
 		</Scene>
 		
-		<Scene key="chat">
+		{/*<Scene key="chat">*/}
 			<Scene
 				// NOTE need to use clone so Messages pushed to route stack and back button present
 				clone={true}
@@ -157,7 +155,7 @@ const scenes = Actions.create(
 				title="Conversation"
 				renderRightButton={ () => null }
 			/>
-		</Scene>
+		{/*</Scene>*/}
 		
 	</Scene>
 );
@@ -191,6 +189,8 @@ export default class Navigator extends Component {
 				
 				// NavBar back button
 				//backButtonImage={Asset.get('icon-back')}
+				hideBackImage={true}
+				backTitle="Back"
 				
 				// NavBar right button
 				rightTitle="Chat"
