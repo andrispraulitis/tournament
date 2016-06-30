@@ -3,11 +3,11 @@
 import { combineReducers } from 'redux';
 
 // Don't store
-import { navigation } from './navigation';
+import { route } from './route';
 
 // Do store
 // TODO
 
 export default combineReducers({
-	navigation
+	route
 });

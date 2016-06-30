@@ -10,10 +10,10 @@ import Menu from './Menu';
 import { Actions, DefaultRenderer } from 'react-native-router-flux';
 
 // Redux
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 
-class NavigationDrawer extends Component {
+export default class NavigationDrawer extends Component {
 	
 	render() {
 		const { navigationState, onNavigate } = this.props;
@@ -63,10 +63,10 @@ class NavigationDrawer extends Component {
 
 
 // Select state from Redux store
-const selectState = (state) => {
-	return {
-		navigation: state.navigation
-	}
-}
-
-export default connect(selectState)(NavigationDrawer);
+// const selectState = (state) => {
+// 	return {
+// 		navigation: state.navigation
+// 	}
+// }
+// 
+// export default connect(selectState)(NavigationDrawer);

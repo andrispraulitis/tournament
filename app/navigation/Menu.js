@@ -20,13 +20,10 @@ import { connect } from 'react-redux';
 class Menu extends Component {
 	
 	render() {
-		const { navigation } = this.props;
+		const { currentScene }	= this.props;
+		const drawerOpacity		= (currentScene && currentScene.name === 'Conversation') ? 0 : 1; // TODO Drawer is visible in background when you pop scenes
 		
-		const drawer		= this.context.drawer;
-		const currentScene	= navigation.name || null;
-		const drawerOpacity	= (navigation.name === 'Conversation') ? 1 : 1; // TODO Drawer is visible in background when you pop scenes
-		
-		// console.log(`%c[ R E N D E R ] Menu :: ${currentScene}`, `color: blue`, this.props);
+		// console.log(`%c[ R E N D E R ] Menu :: ${currentScene.name}`, `color: red`, this.props);
 		return (
 			<View style={[styles.menu, {opacity: drawerOpacity}]}>
 				<View
@@ -39,21 +36,21 @@ class Menu extends Component {
 							underlayColor="transparent"
 							label="Home"
 							styleButton={styles.button}
-							styleLabel={[styles.buttonLabel, (currentScene == 'Dashboard' ? {color: 'red'} : null)]}
+							styleLabel={[styles.buttonLabel, (currentScene.name == 'Dashboard' ? {color: 'red'} : null)]}
 							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Dashboard(); } }
 						/>
 						<Button
 							underlayColor="transparent"
 							label="Events"
 							styleButton={styles.button}
-							styleLabel={[styles.buttonLabel, (currentScene == 'Events' ? {color: 'red'} : null)]}
+							styleLabel={[styles.buttonLabel, (currentScene.name == 'Events' ? {color: 'red'} : null)]}
 							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Events(); } }
 						/>
 						<Button
 							underlayColor="transparent"
 							label="My Contacts"
 							styleButton={styles.button}
-							styleLabel={[styles.buttonLabel, (currentScene == 'Contacts' ? {color: 'red'} : null)]}
+							styleLabel={[styles.buttonLabel, (currentScene.name == 'Contacts' ? {color: 'red'} : null)]}
 							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Contacts(); } }
 						/>
 					</View>
@@ -100,7 +97,7 @@ const styles = StyleSheet.create({
 // Select state from Redux store
 const selectState = (state) => {
 	return {
-		navigation: state.navigation
+		currentScene: state.route.currentScene
 	}
 }
 

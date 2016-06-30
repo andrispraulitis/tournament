@@ -30,7 +30,6 @@ const RouterWithRedux = connect()(Router);
 class EventTabIcon extends Component {
     
 	render() {
-		// console.log('EventTabIcon', this.props);
 		return (
             <View style={{flex: 1, backgroundColor: '#eee'}}>
 				<Text style={{color: this.props.selected ? "red" : "black"}}>{this.props.title}</Text>
