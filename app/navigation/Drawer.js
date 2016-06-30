@@ -16,21 +16,23 @@ import { connect } from 'react-redux';
 class NavigationDrawer extends Component {
 	
 	render() {
-		const { navigation, onNavigate } = this.props;
-		if (!navigation.children) {
+		const { navigationState, onNavigate } = this.props;
+		const { children, open } = navigationState;
+		if (!children) {
+			console.log('ALERT... no children');
 			return null;
 		}
-		const currentScene = navigation.name ? navigation.name : null;
+		const currentScene = navigationState.name ? navigationState.name : null;
 		// console.log(`%c[ R E N D E R ] Drawer`, `color: blue`, this.props);
-		console.log(`%c[ R E N D E R ] Drawer :: ${currentScene}`, `color: blue`, navigation.children[0]);
-		console.log('---- end log ----');
+		// console.log(`%c[ R E N D E R ] Drawer :: ${currentScene}`, `color: blue`, this.props);
+		// console.log('---- end log ----');
 		return (
             <Drawer
 				ref="navigation"
 				type="static"
 				content={<Menu />}
 				
-				open={navigation.open}
+				open={open}
 				openDrawerOffset={0.15}
 				//closedDrawerOffset={-5}
 				tapToClose={true}
@@ -50,7 +52,7 @@ class NavigationDrawer extends Component {
 				tweenEasing='easeInOutQuad'
 			>
                 <DefaultRenderer
-					navigationState={navigation.children[0]}
+					navigationState={children[0]}
 					onNavigate={onNavigate}
 				/>
             </Drawer>

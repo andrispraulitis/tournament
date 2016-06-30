@@ -10,12 +10,22 @@ import {
 // Components
 import Error from '../components/Error';
 
+// Navigator
+// import { NavBar } from 'react-native-router-flux';
+
 // Redux
 import { connect } from 'react-redux';
 
 
 class Messages extends Component {
-	
+	// 
+	// static renderNavigationBar(props) {
+	// 	console.log('test', props);
+	// 	return (
+	// 		<NavBar {...props} />
+	// 	)
+	// }
+	// 
 	constructor(props) {
 		super(props);
 		this.state = {

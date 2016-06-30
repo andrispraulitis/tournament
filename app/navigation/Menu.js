@@ -24,10 +24,11 @@ class Menu extends Component {
 		
 		const drawer		= this.context.drawer;
 		const currentScene	= navigation.name || null;
+		const drawerOpacity	= (navigation.name === 'Conversation') ? 1 : 1; // TODO Drawer is visible in background when you pop scenes
 		
 		// console.log(`%c[ R E N D E R ] Menu :: ${currentScene}`, `color: blue`, this.props);
 		return (
-            <View style={styles.menu}>
+			<View style={[styles.menu, {opacity: drawerOpacity}]}>
 				<View
 					style={styles.menuInner}
 					showsVerticalScrollIndicator={false}

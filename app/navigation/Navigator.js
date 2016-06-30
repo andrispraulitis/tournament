@@ -40,13 +40,11 @@ class EventTabIcon extends Component {
 	
 }
 
-class EventBackButton extends Component {
+class BackButton extends Component {
     
 	render() {
-		// console.log('EventBackButton', this.props);
 		return (
 			<TouchableOpacity
-				//testID="backNavButton"
 				style={this.props.style}
 				onPress={() => Actions.pop()}
 			>
@@ -100,48 +98,43 @@ const scenes = Actions.create(
 			</Scene>
 		</Scene>
 		
-		{/* NOTE Event tabs: need to use clone this but not working */}
+		{/* NOTE Event tabs: need switch to show/hide available tabs */}
 		<Scene key="event" tabs>
 			<Scene
 				key="EventDetails"
 				component={Event}
 				title="Event Details"
 				icon={EventTabIcon}
-				backButton={EventBackButton}
+				backButton={BackButton}
 				//renderRightButton={ () => null }
-				//onSelect={() => Actions.EventDetails()}
 			/>
 			<Scene
 				key="EventPlan"
 				component={Event}
 				title="Event Plan"
 				icon={EventTabIcon}
-				backButton={EventBackButton}
+				backButton={BackButton}
 				//renderRightButton={ () => null }
-				//onSelect={() => Actions.EventPlan()}
 			/>
 		</Scene>
 		
-		{/* NOTE Messages: need to use clone so scene pushed to route stack and back button present */}
-		<Scene
-			key="Messages"
-			component={Messages}
-			title="Messages"
-			renderRightButton={() => null}
-			direction="vertical"
-			clone
-			hideTabBar
-		/>
-		
-		{/* NOTE Conversation: need to use clone so scene pushed to route stack and back button present */}
-		<Scene
-			key="Conversation"
-			component={Conversation}
-			title="Conversation"
-			renderRightButton={() => null}
-			clone
-			hideTabBar
-		/>
+		{/* NOTE Chat: Actions.Conversation({ clone: true }) doesn't clone, have to set clone for the scene */}
+		<Scene key="chat" direction="vertical" hideTabBar>
+			<Scene
+				key="Messages"
+				component={Messages}
+				title="Messages"
+				backButton={BackButton}
+				renderRightButton={() => null}
+			/>
+			<Scene
+				key="Conversation"
+				component={Conversation}
+				title="Conversation"
+				renderRightButton={() => null}
+				clone
+			/>
+		</Scene>
 		
 	</Scene>
 );
@@ -183,7 +176,7 @@ export default class Navigator extends Component {
 				//rightButtonImage={Asset.get('icon-chat')}
 				//rightButtonStyle={[styles.navButton, styles.navButtonRight]}
 				//rightButtonIconStyle={styles.navButtonIcon}
-				onRight={ () => { Actions.Messages() } }
+				onRight={ () => { Actions.chat() } }
 			/>
 		)
 	}

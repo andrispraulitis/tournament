@@ -60,7 +60,7 @@ class Event extends Component {
 	
 	
 	render() {
-		console.log(`%c[ R E N D E R ] Event`, `color: blue`, this.props);
+		// console.log(`%c[ R E N D E R ] Event`, `color: blue`, this.props);
 		if (this.state.isLoading) {
 			return null;
 		}
