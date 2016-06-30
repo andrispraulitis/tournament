@@ -20,8 +20,9 @@ import { connect } from 'react-redux';
 class Menu extends Component {
 	
 	render() {
-		const { currentScene }	= this.props;
-		const drawerOpacity		= (currentScene && currentScene.name === 'Conversation') ? 0 : 1; // TODO Drawer is visible in background when you pop scenes
+		let { currentScene }	= this.props;
+		currentScene			= (currentScene && currentScene.name) ? currentScene.name : null;
+		const drawerOpacity		= (currentScene === 'Conversation') ? 0 : 1; // TODO Drawer is visible in background when you pop scenes
 		
 		// console.log(`%c[ R E N D E R ] Menu :: ${currentScene.name}`, `color: red`, this.props);
 		return (
@@ -36,21 +37,21 @@ class Menu extends Component {
 							underlayColor="transparent"
 							label="Home"
 							styleButton={styles.button}
-							styleLabel={[styles.buttonLabel, (currentScene.name == 'Dashboard' ? {color: 'red'} : null)]}
+							styleLabel={[styles.buttonLabel, (currentScene == 'Dashboard' ? {color: 'red'} : null)]}
 							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Dashboard(); } }
 						/>
 						<Button
 							underlayColor="transparent"
 							label="Events"
 							styleButton={styles.button}
-							styleLabel={[styles.buttonLabel, (currentScene.name == 'Events' ? {color: 'red'} : null)]}
+							styleLabel={[styles.buttonLabel, (currentScene == 'Events' ? {color: 'red'} : null)]}
 							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Events(); } }
 						/>
 						<Button
 							underlayColor="transparent"
 							label="My Contacts"
 							styleButton={styles.button}
-							styleLabel={[styles.buttonLabel, (currentScene.name == 'Contacts' ? {color: 'red'} : null)]}
+							styleLabel={[styles.buttonLabel, (currentScene == 'Contacts' ? {color: 'red'} : null)]}
 							onPress={ () => { Actions.refresh({key: 'drawer', open: false }); Actions.Contacts(); } }
 						/>
 					</View>
@@ -61,6 +62,7 @@ class Menu extends Component {
 	
 }
 
+// StyleSheet
 const styles = StyleSheet.create({
 	// Menu
 	menu: {

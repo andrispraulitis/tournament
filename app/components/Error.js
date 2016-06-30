@@ -13,8 +13,11 @@ import Button from '../components/Button';
 // Navigator
 import { Actions } from 'react-native-router-flux';
 
+// Redux
+import { connect } from 'react-redux';
 
-export default class Error extends Component {
+
+class Error extends Component {
 	
 	render() {
 		return (
@@ -31,13 +34,17 @@ export default class Error extends Component {
 	}
 	
 	_renderButtons(name) {
+		const { dispatch } = this.props;
 		switch (this.props.name) {
 			case 'Dashboard':
 				return (
 					<View>
 						<Button
-							label="Event"
-							onPress={ () => Actions.event() }
+							label="Event #1"
+							onPress={ () => {
+								dispatch({ type: 'RECEIVE_EVENT', eventId: 1 });
+								Actions.event();
+							} }
 						/>
 					</View>
 				)
@@ -45,8 +52,11 @@ export default class Error extends Component {
 				return (
 					<View>
 						<Button
-							label="Event"
-							onPress={ () => Actions.event() }
+							label="Event #2"
+							onPress={ () => {
+								dispatch({ type: 'RECEIVE_EVENT', eventId: 2 });
+								Actions.event();
+							} }
 						/>
 					</View>
 				)
@@ -120,3 +130,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	}
 });
+
+
+export default connect()(Error);

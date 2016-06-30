@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import {
 	TouchableOpacity,
 	View,
-	Text
+	Text,
+	StyleSheet
 } from "react-native";
 
 // Components
@@ -30,14 +31,20 @@ const RouterWithRedux = connect()(Router);
 class EventTabIcon extends Component {
     
 	render() {
+		const { name, event } = this.props;
+		
+		if (event[name] === null) return null;
 		return (
-            <View style={{flex: 1, backgroundColor: '#eee'}}>
-				<Text style={{color: this.props.selected ? "red" : "black"}}>{this.props.title}</Text>
-        	</View>
+			<Text style={{ padding: 5, textAlign: 'center', color: this.props.selected ? 'red' : 'black' }}>
+				{this.props.title}
+			</Text>
 		)
     }
 	
 }
+
+const EventTabIconWithRedux = connect(state => ({ event: state.event }))(EventTabIcon);
+
 
 class BackButton extends Component {
     
@@ -73,6 +80,17 @@ const getSceneStyle = function (props, computedProps) {
 	return style;
 };
 
+// StyleSheet
+const styles = StyleSheet.create({
+	// Menu
+	tabBar: {
+        backgroundColor: '#eee'
+    },
+	tabBarActive: {
+		backgroundColor: '#ccc'
+	}
+});
+
 const scenes = Actions.create(
 	<Scene key="root" hideNavBar hideTabBar>
 		
@@ -97,13 +115,13 @@ const scenes = Actions.create(
 			</Scene>
 		</Scene>
 		
-		{/* NOTE Event tabs: need switch to show/hide available tabs */}
-		<Scene key="event" tabs>
+		{/* NOTE Event tabs: switch on/off available tabs (icon) from Redux store */}
+		<Scene key="event" tabBarStyle={styles.tabBar} tabBarSelectedItemStyle={styles.tabBarActive} tabs>
 			<Scene
-				key="EventDetails"
+				key="EventInfo"
 				component={Event}
-				title="Event Details"
-				icon={EventTabIcon}
+				title="Event Info"
+				icon={EventTabIconWithRedux}
 				backButton={BackButton}
 				//renderRightButton={ () => null }
 			/>
@@ -111,13 +129,38 @@ const scenes = Actions.create(
 				key="EventPlan"
 				component={Event}
 				title="Event Plan"
-				icon={EventTabIcon}
+				icon={EventTabIconWithRedux}
+				backButton={BackButton}
+				//renderRightButton={ () => null }
+			/>
+			<Scene
+				key="EventGuests"
+				component={Event}
+				title="Event Guests"
+				icon={EventTabIconWithRedux}
+				backButton={BackButton}
+				//renderRightButton={ () => null }
+			/>
+			<Scene
+				key="EventMenu"
+				component={Event}
+				title="Event Menu"
+				icon={EventTabIconWithRedux}
+				backButton={BackButton}
+				//renderRightButton={ () => null }
+			/>
+			<Scene
+				key="EventGallery"
+				component={Event}
+				title="Event Gallery"
+				//icon={EventTabIconWithRedux}
+				icon={() => null}
 				backButton={BackButton}
 				//renderRightButton={ () => null }
 			/>
 		</Scene>
 		
-		{/* NOTE Chat: Actions.Conversation({ clone: true }) doesn't clone, have to set clone for the scene */}
+		{/* NOTE Chat scenes: Actions.Conversation({ clone: true }) doesn't clone, have to set clone for the scene */}
 		<Scene key="chat" direction="vertical" hideTabBar>
 			<Scene
 				key="Messages"
@@ -181,3 +224,5 @@ export default class Navigator extends Component {
 	}
 	 
 }
+
+

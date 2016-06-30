@@ -9,23 +9,14 @@ import Menu from './Menu';
 // Navigator
 import { Actions, DefaultRenderer } from 'react-native-router-flux';
 
-// Redux
-// import { connect } from 'react-redux';
-
 
 export default class NavigationDrawer extends Component {
 	
 	render() {
 		const { navigationState, onNavigate } = this.props;
 		const { children, open } = navigationState;
-		if (!children) {
-			console.log('ALERT... no children');
-			return null;
-		}
-		const currentScene = navigationState.name ? navigationState.name : null;
-		// console.log(`%c[ R E N D E R ] Drawer`, `color: blue`, this.props);
-		// console.log(`%c[ R E N D E R ] Drawer :: ${currentScene}`, `color: blue`, this.props);
-		// console.log('---- end log ----');
+		
+		if (!children) return null;
 		return (
             <Drawer
 				ref="navigation"
@@ -60,13 +51,3 @@ export default class NavigationDrawer extends Component {
     }
 	
 }
-
-
-// Select state from Redux store
-// const selectState = (state) => {
-// 	return {
-// 		navigation: state.navigation
-// 	}
-// }
-// 
-// export default connect(selectState)(NavigationDrawer);

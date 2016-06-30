@@ -16,24 +16,14 @@ import { connect } from 'react-redux';
 
 class Event extends Component {
 	
-	constructor(props) {
-		super(props);
-		this.state = {
-			isLoading: true
-		}
-	}
-	
-	
-	
 	// componentWillMount() {
 	// 	console.log('componentWillMount', this.props);
 	// }
-	
-	componentDidMount() {
-		this.setState({isLoading: false});
-		// console.log('componentDidMount');
-	}
-	
+	// 
+	// componentDidMount() {
+	// 	console.log('componentDidMount');
+	// }
+	// 
 	// componentWillUnmount() {
 	// 	console.log('componentWillUnmount');
 	// }
@@ -55,15 +45,8 @@ class Event extends Component {
 	// 	console.log('componentDidUpdate');
 	// }
 	
-	
-	
-	
-	
 	render() {
 		// console.log(`%c[ R E N D E R ] Event`, `color: blue`, this.props);
-		if (this.state.isLoading) {
-			return null;
-		}
 		return (
 			<Error name={this.props.name} title={this.props.title} message="Coming soon..."/>
 		)
